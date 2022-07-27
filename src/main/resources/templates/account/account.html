@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: header"></head>
+<body>
+ <div th:replacce="common/body/navbar :: navbar"></div>
+
+ <div th:fragment="account">
+    <form method="POST" th:action="@{/adicionar}" th:object="${account}">
+        <div class="form-group">
+          <label for="saldo">Saldo </label>
+          <input type="number" class="form-control" id="saldo">
+          <small id="saldoHelp" class="form-text text-muted">Introdusca el saldo de la cuenta.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Acceptar saldo</button>
+      </form>
+ </div>
+  
+
+</body>
+</html>
