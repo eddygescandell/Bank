@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: header"></head>
+<body>
+<div th:replace="common/body/navbar :: navbar"></div>
+
+<div th:if="${msgSucces != null}">
+  [[${msgSucces}]]
+</div>
+<di>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Saldo</th>
+      <th scope="col">Fecha de Creación</th>
+      <th scope="col">Cliente Asignado</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="account: ${accountlist}">
+      <td th:text="${account.id}"></td>
+      <td th:text="${account.balance}"></td>
+      <td th:text="${#temporals.format(account.creationDate, 'dd/MM/YYYY hh:MM a')}"></td>
+      <td th:text="${account.coustumer.name}"></td>
+
+      <td>
+        <a th:href="@{/{id}/editaccount/(id=${account.id})}" class="btn btn-outline-primary">Editar</a>
+        <a th:href="@{/{id}/deletaccount/(id=${account.id})}" class="btn btn-outline-danger">Eliminar</a>
+      </td>
+
+
+      <!--               <a th:href="#" >Eliminar</a>-->
+      <!--               <form th:action="@{/{id}/deletcoustumer/(id=${coustumer.id})}" method="post"></form>-->
+    </tr>
+    </tbody>
+  </table>
+</di>
+<!--<script>-->
+<!--    function deletCoustumer(element){-->
+<!--     var ok = confirm('Deseas eliminar el cliente?')-->
+
+<!--     if(ok){-->
+<!--      element.nextElementSibling.submint();-->
+<!--     }-->
+<!--    }-->
+<!--</script>-->
+
+
+</body>
+</html>
