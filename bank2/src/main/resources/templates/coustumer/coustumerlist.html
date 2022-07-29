@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: header"></head>
+<body>
+<div th:replace="common/body/navbar :: navbar"></div>
+
+<div th:if="${msgSucces != null}">
+    [[${msgSucces}]]
+</div>
+<di>
+
+   <table class="table table-bordered">
+       <thead>
+       <tr>
+           <th scope="col">ID</th>
+           <th scope="col">Nombre(s)</th>
+           <th scope="col">Apellidos</th>
+           <th scope="col">Carnet de Identidad</th>
+           <th scope="col">Dirección</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr th:each="coustumer: ${coustumer}">
+           <td th:text="${coustumer.id}"></td>
+           <td th:text="${coustumer.name}"></td>
+           <td th:text="${coustumer.last_name}"></td>
+           <td th:text="${coustumer.identification}"></td>
+           <td th:text="${coustumer.address}"> </td>
+           <td>
+               <a th:href="@{/{id}/editcoustumer/(id=${coustumer.id})}" class="btn btn-outline-primary">Editar</a>
+               <a th:href="@{/{id}/deletcoustumer/(id=${coustumer.id})}" class="btn btn-outline-danger">Eliminar</a>
+           </td>
+
+
+<!--               <a th:href="#" >Eliminar</a>-->
+<!--               <form th:action="@{/{id}/deletcoustumer/(id=${coustumer.id})}" method="post"></form>-->
+       </tr>
+       </tbody>
+   </table>
+</di>
+<!--<script>-->
+<!--    function deletCoustumer(element){-->
+<!--     var ok = confirm('Deseas eliminar el cliente?')-->
+
+<!--     if(ok){-->
+<!--      element.nextElementSibling.submint();-->
+<!--     }-->
+<!--    }-->
+<!--</script>-->
+
+
+</body>
+</html>

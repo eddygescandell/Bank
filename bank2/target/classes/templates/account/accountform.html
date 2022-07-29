@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html th:lang="es" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: header"></head>
+<body>
+<div th:replace="common/body/navbar :: navbar"></div>
+<h3>[[${account.id ne null ? 'Editar Cuenta' : 'Agregar Cuenta'}]]</h3>
+<div>
+  <form action="" th:object="${account}" method="post">
+    <div>
+      <label for="saldo">Saldo</label>
+      <input type="number" class="form-control" id="saldo" th:field="*{balance}" th:errorClass="is-invalid">
+      <div th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}" class="invalid-feedback"></div>
+    </div>
+    <div>
+      <label >Cliente</label>
+      <div>
+        <select th:field="*{coustumer}"  required>
+          <th:block th:each="coustumer : ${coustumerlis}">
+            <option th:text="${coustumer.name}" th:value="${coustumer.id}"></option>
+          </th:block>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>
+</body>
+</html>
